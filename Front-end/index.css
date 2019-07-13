@@ -1,12 +1,4 @@
-/* #LandingImg {
-    background-image: url(./images/GettyImages_463173435.0.jpg);
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
 
-  } */
   body {
       background-color: #212529;
   }
@@ -38,3 +30,17 @@
   .center {
       text-align: center;
   }
+
+  /* Sell Page */
+
+  .sellBody{
+      height: 400px;
+      background-color: white;
+  }
+  .white{
+      color: white
+  }
+  .zeroPad{
+      padding: 0;
+  }
+ 
