@@ -2,6 +2,13 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const bodyParser = require("body-parser")
+
+// support parsing of application/json type post data
+app.use(bodyParser.json({limit: '10mb', extended: true}));
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true }));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +19,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+
+require("./app/routes/api-routes.js")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs

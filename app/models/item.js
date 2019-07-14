@@ -9,7 +9,7 @@ var sequelize = require("../config/connection.js");
 // Creates a "Book" model that matches up with DB
 var Item = sequelize.define("item", {
   name: Sequelize.STRING,
-  image: Sequelize.TEXT,
+  image: Sequelize.STRING,
   category: Sequelize.STRING,
   description: Sequelize.STRING,
   price: Sequelize.INTEGER
