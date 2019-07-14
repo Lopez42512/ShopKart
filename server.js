@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 const bodyParser = require("body-parser")
 
@@ -14,9 +14,11 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+app.use(express.static("app"));
+// }
+
+require("./app/routes/api-routes.js")(app);
 
 // Define API routes here
 
