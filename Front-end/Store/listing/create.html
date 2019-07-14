@@ -54,6 +54,7 @@
             <div class="form-group">
 
                 <select class="form-control catBar" id="exampleFormControlSelect1">
+                    <option>All</option>
                     <option>Art</option>
                     <option>Books</option>
                     <option>Electronics</option>
@@ -87,11 +88,49 @@
         </nav>
     </div>
     <div class="container">
-        <div class="sellBody"></div>
-
+        <div class="sellBody">
+            <input id="name" placeholder="Enter Product name">
+            <input id="desc" placeholder="Enter Product Description">
+            <input id="price" placeholder="Enter price">
+            <select id="cat">
+                <option>Art</option>
+                <option>Electronics</option>
+                <option>Books</option>
+                <option>Home and Garden</option>
+                <option>Jewelry</option>
+            </select>
+            <input type="file" onchange="previewFile()"><br>
+            <img id="img" src="" height="200" alt="Image preview...">
+            <button style="margin-top: 15px" id="submit">Submit</button>
+        </div>
     </div>
 
 
 </body>
+<script>
+    function previewFile(){
+        var preview = document.querySelector('img'); //selects the query named img
+        var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); //reads the data as a URL
+        } else {
+            preview.src = "";
+        }
+    }
+
+    previewFile();  //calls the function named previewFile()
+
+
+    $("#submit").click(function(){
+        var imgSrc = $("img").attr("src")
+        console.log($("#name").val(),$("#desc").val(),$("#price").val(),$("#cat").val(),imgSrc)
+    })
+</script>
 
 </html>
