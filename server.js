@@ -2,18 +2,27 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3002;
 const app = express();
+const bodyParser = require("body-parser")
+
+// support parsing of application/json type post data
+app.use(bodyParser.json({limit: '10mb', extended: true}));
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true }));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+app.use(express.static("app"));
+// }
 
 require("./app/routes/api-routes.js")(app);
 
 // Define API routes here
+
+require("./app/routes/api-routes.js")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
