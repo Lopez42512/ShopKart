@@ -18,7 +18,7 @@ module.exports = function(app) {
 
   // Get all items of a specific category
   app.get("/api/category/:category", function(req, res) {
-    Book.findAll({
+    Item.findAll({
       where: {
         category: req.params.category
       }
