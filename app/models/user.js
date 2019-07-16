@@ -6,22 +6,20 @@
 // // sequelize (lowercase) references my connection to the DB.
 // var sequelize = require("../config/connection.js");
 
+// Creates a "Book" model that matches up with DB
 module.exports = function(sequelize, DataTypes) {
-  var Item = sequelize.define("Item", {
-    name: DataTypes.STRING,
-    image: DataTypes.STRING,
-    category: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER
+
+  var User = sequelize.define("User", {
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
+    UserId:DataTypes.STRING
   });
 
-  Item.associate = function (models){
-    Item.belongsTo(models.User,{
-      foreignKey:{
-        allowNull: false
-      }
-    })
+  User.associate = function(models){
+    User.hasMany(models.Item,{
+      onDelete: "cascade"
+    });
   }
 
-  return Item;
+  return User;
 }
