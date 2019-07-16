@@ -1,37 +1,42 @@
-function previewFile() {
-  var preview = document.querySelector("img"); //selects the query named img
-  var file = document.querySelector("input[type=file]").files[0]; //sames as here
-  var reader = new FileReader();
+// $(document).ready(function(){
 
-  reader.onloadend = function() {
-    preview.src = reader.result;
-  };
+// function previewFile() {
+//   var preview = document.querySelector("img"); //selects the query named img
+//   var file = document.querySelector("input[type=file]").files[0]; //sames as here
+//   var reader = new FileReader();
 
-  if (file) {
-    reader.readAsDataURL(file); //reads the data as a URL
-  } else {
-    preview.src = "";
-  }
-}
+//   reader.onloadend = function() {
+//     preview.src = reader.result;
+//   };
 
-previewFile(); //calls the function named previewFile()
+//   if (file) {
+//     reader.readAsDataURL(file); //reads the data as a URL
+//   } else {
+//     preview.src = "";
+//   }
+// }
 
-$("#submit").click(function(event) {
-  event.preventDefault();
+// previewFile(); //calls the function named previewFile()
 
-  var imgSrc = $("img").attr("src");
+// $("#submit").click(function(event) {
+//   event.preventDefault();
 
-  var newItem = {
-    name: $("#name").val(),
-    description: $("#desc").val(),
-    price: $("#price").val(),
-    category: $("#cat").val(),
-    image: imgSrc
-  };
+//   var imgSrc = $("img").attr("src");
 
-  console.log(newItem);
+//   var newItem = {
+//     name: $("#name").val(),
+//     description: $("#desc").val(),
+//     price: $("#price").val(),
+//     category: $("#cat").val(),
+//     image: imgSrc
+//   };
 
-  $.post("/api/new", newItem).then(function() {
-    console.log("success");
-  });
-});
+//   console.log(newItem);
+
+//   $.post("/api/new", newItem).then(function() {
+//     console.log("success");
+//   });
+// });
+
+
+// })

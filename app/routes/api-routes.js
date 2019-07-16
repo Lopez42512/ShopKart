@@ -4,21 +4,21 @@
 
 // Dependencies
 // =============================================================
-var Item = require("../models/item");
+var db = require("../models");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
   // Get all items
   app.get("/api/all", function(req, res) {
-    Item.findAll({}).then(function(results) {
+    db.Item.findAll({}).then(function(results) {
       res.json(results);
     });
   });
 
   // Get all items of a specific category
   app.get("/api/category/:category", function(req, res) {
-    Item.findAll({
+    db.Item.findAll({
       where: {
         category: req.params.category
       }
@@ -30,13 +30,29 @@ module.exports = function(app) {
   app.post("/api/new", function(req, res) {
     console.log(req.body);
 
-    Item.create({
+    db.Item.create({
+      UserId: req.body.userId,
       name: req.body.name,
       image: req.body.image,
       category: req.body.category,
       description: req.body.description,
       price: req.body.price,
       create_at: req.body.create_at
+      
+    }).then(function(results){
+      res.end()
+    });
+  });
+
+
+  // create a new user
+  app.post("/api/new/user", function(req, res) {
+    console.log(req.body);
+
+    db.Item.create({
+      username: req.body.email,
+      password: req.body.password
+      
     }).then(function(results){
       res.end()
     });

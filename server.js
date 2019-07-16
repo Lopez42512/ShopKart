@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 const bodyParser = require("body-parser")
 
+var db = require("./app/models");
+
 // support parsing of application/json type post data
 app.use(bodyParser.json({limit: '10mb', extended: true}));
 
@@ -23,7 +25,7 @@ require("./app/routes/api-routes.js")(app);
 
 // Define API routes here
 
-require("./app/routes/api-routes.js")(app);
+// require("./app/routes/api-routes.js")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -35,6 +37,21 @@ app.get("/create", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/Store/listing/create.html"))
 })
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+// this route will load login page
+app.get("/login/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/login.html"))
 });
+
+// this route will load registration page
+app.get("/login/register/signup", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/registration.html"))
+})
+
+
+
+
+db.sequelize.sync( {force: false} ).then(function() {
+  app.listen(PORT, () => {
+    console.log(`🌎 ==> API server now on port ${PORT}!`);
+  });
+})
