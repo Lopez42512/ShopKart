@@ -126,10 +126,10 @@
                     // Get a reference to the jobList element and populate it with jobs
                     var box = $("<div>");
                         box.addClass(DB[i].id);
-                    var btn = $("<button>Buy it</button>");
-                    var userId = DB[i].id;
-                        btn.addClass(userId);
-                        var br = $("<br />");
+                    // var btn = $("<button>Buy it</button>");
+                    // var userId = DB[i].id;
+                        // btn.addClass(userId);
+                        // var br = $("<br />");
                     box.append(
                         $("<p>").text("id"+" "+ DB[i].id),
                         $("<p>").text("Name:" + " " + DB[i].name),
@@ -138,8 +138,8 @@
                         $("<p>").text("price:" + " " + DB[i].price),
                             //insert image
                          img,
-                         br,
-                         btn,
+                        //  br,
+                        //  btn,
                          
                           );
                    
@@ -161,15 +161,15 @@
 
 
     });
-    $(".userId").on("click", function(){
-        //     var itemInfo = {
-        //         name: $(".name").val()
-        //         // category:
-        //         // description:
-        //         // price:
-        // }
-            console.log("something");
-        })
+    // $(".userId").on("click", function(){
+    //     //     var itemInfo = {
+    //     //         name: $(".name").val()
+    //     //         // category:
+    //     //         // description:
+    //     //         // price:
+    //     // }
+    //         console.log("something");
+    //     })
 </script>
 
 </html>
