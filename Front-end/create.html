@@ -16,7 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../store.css">
+    <link rel="stylesheet" href="./css/store.css">
     <title>Create</title>
 </head>
 <body>
@@ -115,51 +115,51 @@
     </div>
 </body>
 <!-- <script type="text/javascript" src="../../js/create.js"> -->
-    <script>
-     var url = window.location.search;
-     console.log(url);
-     var authorId = url.split("?")[1];
-     console.log(authorId);
+    <script src="./js/create.js">
+//      var url = window.location.search;
+//      console.log(url);
+//      var authorId = url.split("?")[1];
+//      console.log(authorId);
 
-function previewFile() {
-  var preview = document.querySelector("img"); //selects the query named img
-  var file = document.querySelector("input[type=file]").files[0]; //sames as here
-  var reader = new FileReader();
+// function previewFile() {
+//   var preview = document.querySelector("img"); //selects the query named img
+//   var file = document.querySelector("input[type=file]").files[0]; //sames as here
+//   var reader = new FileReader();
 
-  reader.onloadend = function() {
-    preview.src = reader.result;
-  };
+//   reader.onloadend = function() {
+//     preview.src = reader.result;
+//   };
 
-  if (file) {
-    reader.readAsDataURL(file); //reads the data as a URL
-  } else {
-    preview.src = "";
-  }
-}
+//   if (file) {
+//     reader.readAsDataURL(file); //reads the data as a URL
+//   } else {
+//     preview.src = "";
+//   }
+// }
 
-previewFile(); //calls the function named previewFile()
+// previewFile(); //calls the function named previewFile()
 
-$("#submit").click(function(event) {
-  event.preventDefault();
+// $("#submit").click(function(event) {
+//   event.preventDefault();
 
-  var imgSrc = $("img").attr("src");
-  var one = 1;
+//   var imgSrc = $("img").attr("src");
+//   var one = 1;
 
-  var newItem = {
-    UserId: authorId,
-    name: $("#name").val(),
-    description: $("#desc").val(),
-    price: $("#price").val(),
-    category: $("#cat").val(),
-    image: imgSrc
-  };
+//   var newItem = {
+//     UserId: authorId,
+//     name: $("#name").val(),
+//     description: $("#desc").val(),
+//     price: $("#price").val(),
+//     category: $("#cat").val(),
+//     image: imgSrc
+//   };
 
-  console.log(newItem);
+//   console.log(newItem);
 
-  $.post("/api/new", newItem).then(function() {
-    console.log("success");
-  });
-});
+//   $.post("/api/new", newItem).then(function() {
+//     console.log("success");
+//   });
+// });
 
 
 

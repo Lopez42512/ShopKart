@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 const bodyParser = require("body-parser")
 
-var db = require("./app/models");
+var db = require("./models");
 
 // support parsing of application/json type post data
 app.use(bodyParser.json({limit: '10mb', extended: true}));
@@ -18,10 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
-app.use(express.static("app"));
+app.use(express.static("Front-end"));
 // }
 
-require("./app/routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Define API routes here
 
