@@ -116,31 +116,10 @@
 </body>
 <!-- <script type="text/javascript" src="../../js/create.js"> -->
     <script>
-    // function previewFile() {
-    //     var preview = document.querySelector('img'); //selects the query named img
-    //     var file = document.querySelector('input[type=file]').files[0]; //sames as here
-    //     var reader = new FileReader();
-    //     reader.onloadend = function () {
-    //         preview.src = reader.result;
-    //     }
-    //     if (file) {
-    //         reader.readAsDataURL(file); //reads the data as a URL
-    //     } else {
-    //         preview.src = "";
-    //     }
-    // }
-    // previewFile();  //calls the function named previewFile()
-    // $("#submit").click(function () {
-    //     var imgSrc = $("img").attr("src")
-    //     // UserID    
-    //     console.log($("#name").val(),
-    //      $("#desc").val(),
-    //       $("#price").val(),
-    //        $("#cat").val(),
-    //         imgSrc);
-    // })
-
-    // $(document).ready(function(){
+     var url = window.location.search;
+     console.log(url);
+     var authorId = url.split("?")[1];
+     console.log(authorId);
 
 function previewFile() {
   var preview = document.querySelector("img"); //selects the query named img
@@ -164,9 +143,10 @@ $("#submit").click(function(event) {
   event.preventDefault();
 
   var imgSrc = $("img").attr("src");
+  var one = 1;
 
   var newItem = {
-    userId: "1",
+    UserId: authorId,
     name: $("#name").val(),
     description: $("#desc").val(),
     price: $("#price").val(),
@@ -182,6 +162,6 @@ $("#submit").click(function(event) {
 });
 
 
-// })
+
 </script>
 </html>
