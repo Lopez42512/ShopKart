@@ -17,7 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="index.css">
     <title>ShopKart</title>
 
 </head>
@@ -84,7 +84,56 @@
 <script>
 
     $(document).ready(function () {
+        
+        $.ajax({
+                url: "/api/all",
+                method: "GET"
+            })
+                .then(function (DB) {
 
+                    // Here we then log the DB to console, where it will show up as an object.
+                    console.log(DB);
+                    console.log("------------------------------------");
+
+                    // Loop through and display each job
+                    for (var i = 0; i < DB.length; i++) {
+
+                        // Get a reference to the jobList element and populate it with jobs
+                        var box = $("<div>");
+                        box.addClass("one");
+                        box.append(
+                            $("<p>").text("Name:" + " " + DB[i].name),
+                            $("<p>").text("Category:" + " " + DB[i].category),
+                            $("<p>").text("description:" + " " + DB[i].description),
+                            $("<p>").text("price:" + " " + DB[i].price),
+                            $("<button>").addClass("buy").text("Purchase")
+                        );
+
+                        let img = new Image();
+                        // let test = DB[i].image.replace(/\s/g, "+");
+                        
+                        // img.src = test;
+                        // img.class = img;
+
+                        //=========================
+                       
+                        let testToString = DB[i].image.toString().replace(/\s/g, "+");
+                        
+                        img.src = testToString;
+                        img.class = img;
+                        // .replace(/\s/g, "+");
+
+                        //=========================
+
+
+                        $("#test_one").append(box, img);
+                    }
+                    $(".buy").click(function(){
+                        console.log(box)
+                    })
+                });
+        
+        
         // ===================  search by category code ======================
         $("#SearchBtn").on("click", function (event) {
             event.preventDefault();
@@ -138,48 +187,7 @@
             // console.log("hello world");
 
 
-            // $.ajax({
-            //     url: "/api/all",
-            //     method: "GET"
-            // })
-            //     .then(function (DB) {
-
-            //         // Here we then log the DB to console, where it will show up as an object.
-            //         console.log(DB);
-            //         console.log("------------------------------------");
-
-            //         // Loop through and display each job
-            //         for (var i = 0; i < DB.length; i++) {
-
-            //             // Get a reference to the jobList element and populate it with jobs
-            //             var box = $("<div>");
-            //             box.addClass("one");
-            //             box.append(
-            //                 $("<p>").text("Name:" + " " + DB[i].name),
-            //                 $("<p>").text("Category:" + " " + DB[i].category),
-            //                 $("<p>").text("description:" + " " + DB[i].description),
-            //                 $("<p>").text("price:" + " " + DB[i].price)
-            //             );
-            //             let img = new Image();
-            //             // let test = DB[i].image.replace(/\s/g, "+");
-                        
-            //             // img.src = test;
-            //             // img.class = img;
-
-            //             //=========================
-                       
-            //             let testToString = DB[i].image.toString().replace(/\s/g, "+");
-                        
-            //             img.src = testToString;
-            //             img.class = img;
-            //             // .replace(/\s/g, "+");
-
-            //             //=========================
-
-
-            //             $("#test_one").append(box, img);
-            //         }
-            //     });
+            
 
 
 
