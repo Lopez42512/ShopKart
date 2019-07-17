@@ -45,18 +45,40 @@ module.exports = function(app) {
   });
 
 
-  // create a new user
+  //============== create a new user ====================================
+
   app.post("/api/new/user", function(req, res) {
     console.log(req.body);
 
-    db.Item.create({
+    db.User.create({
       username: req.body.email,
       password: req.body.password
       
     }).then(function(results){
-      res.end()
+
+      res.send({
+        status: "added",
+        message:"Your account created"});
     });
   });
+
+  //==============================++=======================+==+=====+=+=+====
+
+  //========================== User login route ============================
+  app.get("/api/username:n/Password:p", function(req, res) {
+    console.log(req.params);
+    // Find one user with the username and password 
+    db.User.findOne({
+      where: {
+        username: req.params.n,
+        password: req.params.p
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  
 
   // // Get a specific book
   // app.get("/api/:book", function(req, res) {

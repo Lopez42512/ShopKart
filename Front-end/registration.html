@@ -25,46 +25,68 @@
 <body>
 
     <br />
-<div class="container">
+    <div class="container">
         <div class="jumbotron">
-                <h1 class="display-4 jumboTitle">ShopKart</h1>
-                <hr class="my-4">
-                <p class="center">Buy & Sell</p>
-                <p class="center">Create Your Own Store</p>
-            </div>
-<br />
-<h3>Please Enter Your Email and Password to Sign Up</h3>
-<br />
+            <h1 class="display-4 jumboTitle">ShopKart</h1>
+            <hr class="my-4">
+            <p class="center">Buy & Sell</p>
+            <p class="center">Create Your Own Store</p>
+        </div>
+        <br />
+        <div id="newMessage"></div>
+        <div id="loginInfo">
+        <h3>Please Enter Your Email and Password to Sign Up</h3>
+        <br />
         <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Email and Password</span>
-                </div>
-                <input id="email" type="text" aria-label="First name" class="form-control">
-                <input id="password" type="text" aria-label="Last name" class="form-control">
-              </div>
-              <br />
-              <button id="register" type="submit">Register</button>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Name and Password</span>
+            </div>
+            <input id="email" type="text" aria-label="First name" class="form-control">
+            <input id="password" type="text" aria-label="Last name" class="form-control">
+        </div>
+        <br />
+        <button id="register" type="submit">Register</button>
+    </div>
 
 
+    <a id="linkToLoginPage" href="./access"><button>Press Here To Login</button></a>
+    </div>
+</body>
+<script type="text/javascript">
 
- 
-</div>
-    </body>
-    <script type="text/javascript">
-    
-        $("#register").on("click", function(){
+    var loginLink = $("#linkToLoginPage");
+    loginLink.hide();
 
-            var newUser = {
-                email: $('#email').val(),
-                password: $('#password').val()
-            }
-            console.log(newUser);
+    $("#register").on("click", function () {
 
-            $.post("/api/new/user", newUser).then(function() {
-                 console.log("success");
-  });
-        })
+        var newUser = {
+            email: $('#email').val(),
+            password: $('#password').val()
+        }
+        console.log(newUser);
+
+        $.post("/api/new/user", newUser).then(function (res) {
+
+            console.log("success");
+            console.log(res);
+       
+
+        // hide login inputs
+        var loginStuff = $("#loginInfo");
+        loginStuff.hide();
+
+        // creates new div with a message 
+        var message = res.message;
+
+        var newMessage = $("<h3>"+ message +"</h3>");
+
+        $("#newMessage").append(newMessage);
+        loginLink.show();
+    });  
+
+    })
 
 
-    </script>
-    </html>
+</script>
+
+</html>

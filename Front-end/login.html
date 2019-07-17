@@ -37,9 +37,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">Name and Password</span>
                 </div>
-                <input type="text" aria-label="First name" class="form-control">
-                <input type="text" aria-label="Last name" class="form-control">
-                <button>Login</button>
+                <input id="username" type="text" aria-label="First name" class="form-control">
+                <input id="password" type="text" aria-label="Last name" class="form-control">
+                <button id="loginBtn">Login</button>
               </div>
 <br />
 <br />
@@ -47,4 +47,32 @@
     <p>If you don't have an account with us please press<a href="/login/register/signup"><h1>here</h1> </a>to sign up</p>
 </div>
     </body>
+    <script type="text/javascript">
+    $("#loginBtn").on("click", function(event){
+        event.preventDefault();
+
+        var userLogin = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        };
+
+        console.log(userLogin);
+
+        // $.get("/api/usernameAndPassword", userLogin).then(function (res) {
+        //         console.log(res);
+
+        // });
+            //"/api/username:nAndPassword:p"
+        $.ajax({
+        url:"/api/username"+userLogin.username+"/Password"+userLogin.password,
+        method: "GET"
+      })
+         // After the data from the AJAX request comes back
+        .then(function(res) {
+            console.log(res)
+        });
+
+    })
+    
+    </script>
     </html>

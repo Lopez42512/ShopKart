@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.INTEGER
-  });
+   });
 
   Item.associate = function (models){
     Item.belongsTo(models.User,{

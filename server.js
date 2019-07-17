@@ -47,6 +47,10 @@ app.get("/login/register/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/registration.html"))
 })
 
+// Login page route
+app.get("/login/register/access", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/login.html"))
+})
 
 
 
