@@ -100,29 +100,21 @@
             $.get("/api/category/" + category, function (DB) {
 
                 // Log the data to the console
-                console.log(DB);
+                // console.log(DB);
                 // Call our renderBooks function to add our books to the page
                 // renderBooks(data);
 
                 // Loop through and display each job
                 for (var i = 0; i < DB.length; i++) {
 
-                    // Get a reference to the jobList element and populate it with jobs
-                    var box = $("<div>");
-                    box.addClass("one");
-                    box.append(
-                        $("<p>").text("Name:" + " " + DB[i].name),
-                        $("<p>").text("Category:" + " " + DB[i].category),
-                        $("<p>").text("description:" + " " + DB[i].description),
-                        $("<p>").text("price:" + " " + DB[i].price)
-                    );
-                    // let img = new Image();
-                    // console.log(img);
-                    // let test = DB[i].image.replace(/\s/g, "+");
+                    // var itemInfo = {
+                    //     name: DB[i].name,
+                    //     category: DB[i].category,
+                    //     description: DB[i].description,
+                    //     price: DB[i].price
+                    // }
 
-                    // img.src = test;
-                    // img.class = img;
-
+                
                     let img = new Image();
                    
                     let test = DB[i].image.replace(/\s/g, "+");
@@ -130,66 +122,44 @@
                     img.src = test;
                     img.class = img;
 
-                    $("#test_one").prepend(box, img);
+
+                    // Get a reference to the jobList element and populate it with jobs
+                    var box = $("<div>");
+                    box.addClass(DB[i].id);
+                    box.append(
+                        $("<p>").text("id"+" "+ DB[i].id),
+                        $("<p>").text("Name:" + " " + DB[i].name),
+                        $("<p>").text("Category:" + " " + DB[i].category),
+                        $("<p>").text("description:" + " " + DB[i].description),
+                        $("<p>").text("price:" + " " + DB[i].price),
+                            //insert image
+                         img
+                    );
+                   
+                  
+
+                            
+
+                    $("#test_one").prepend(box,);
+                 
                 }
 
             });
-
-
+        
+        
             //====================================================================
 
-            // console.log("hello world");
-
-
-            // $.ajax({
-            //     url: "/api/all",
-            //     method: "GET"
-            // })
-            //     .then(function (DB) {
-
-            //         // Here we then log the DB to console, where it will show up as an object.
-            //         console.log(DB);
-            //         console.log("------------------------------------");
-
-            //         // Loop through and display each job
-            //         for (var i = 0; i < DB.length; i++) {
-
-            //             // Get a reference to the jobList element and populate it with jobs
-            //             var box = $("<div>");
-            //             box.addClass("one");
-            //             box.append(
-            //                 $("<p>").text("Name:" + " " + DB[i].name),
-            //                 $("<p>").text("Category:" + " " + DB[i].category),
-            //                 $("<p>").text("description:" + " " + DB[i].description),
-            //                 $("<p>").text("price:" + " " + DB[i].price)
-            //             );
-            //             let img = new Image();
-            //             // let test = DB[i].image.replace(/\s/g, "+");
-                        
-            //             // img.src = test;
-            //             // img.class = img;
-
-            //             //=========================
-                       
-            //             let testToString = DB[i].image.toString().replace(/\s/g, "+");
-                        
-            //             img.src = testToString;
-            //             img.class = img;
-            //             // .replace(/\s/g, "+");
-
-            //             //=========================
-
-
-            //             $("#test_one").append(box, img);
-            //         }
-            //     });
-
-
-
-
-
-
         });
+        // $("#buyBtn").on("click", function(){
+        //     var itemInfo = {
+        //         name: $(".name").val()
+        //         // category:
+        //         // description:
+        //         // price:
+        // }
+        //     console.log("something");
+        // })
+
 
     });
 
