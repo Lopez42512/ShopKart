@@ -23,7 +23,16 @@ function previewFile() {
   var url = window.location.search;
     
      var authorId = url.split("?")[1];
+     var authorName = url.split("?")[2];
      console.log(authorId);
+     console.log(authorName);
+
+     //==== this will create div with user name on top of the page
+     var helloUser = $('<li class="nav-item mt-2 mr-3">Hello'+" "+ authorName + "</li>");
+     
+     $("#navBar").prepend(helloUser);
+
+     //==============================================
 
   $("#submit").click(function(event) {
     event.preventDefault();

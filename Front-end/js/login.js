@@ -29,7 +29,7 @@ $("#loginBtn").on("click", function (event) {
 
             } else if (res !== null) {
               console.log(res)
-              loggedInUser (res)
+              loggedInUser (res.id,res.name)
               // redirect to homepage
                 // location.assign("/");
             }
@@ -37,9 +37,12 @@ $("#loginBtn").on("click", function (event) {
 
 });
 
-function loggedInUser (id){
-    // redirect to homepage
-    location.assign("/create?"+id);
+function loggedInUser (id,name){
+    // // redirect to upload page
+    // location.assign("/create?"+id);
+     // redirect to upload page
+     location.assign("/create?"+id+"?"+name);
+
     
 }
 
