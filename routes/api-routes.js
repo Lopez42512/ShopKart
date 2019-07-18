@@ -15,6 +15,7 @@ module.exports = function(app) {
   // Get all items
   app.get("/api/all", function(req, res) {
     db.Item.findAll({}).then(function(results) {
+      // console.log(results);
       res.json(results);
     });
   });
@@ -26,6 +27,8 @@ module.exports = function(app) {
         category: req.params.category
       }
     }).then(function(results) {
+      // console.log("+++++++++++++++++++++++++++++++++")
+      // console.log(results);
       res.json(results);
     });
   });
@@ -79,8 +82,14 @@ module.exports = function(app) {
         user_id_status = true;
         console.log(user_id_status);
         console.log("======================================")
-        console.log(result.id);
-      res.json(result.id);
+        // console.log(result.id);
+        // console.log(result.username);
+        var userInfo = {
+          id: result.id,
+          name: result.username
+        };
+        console.log(userInfo);
+      res.json(userInfo);
       }
     });
   });
