@@ -4,11 +4,12 @@ $(document).ready(function() {
     method: "GET"
   }).then(function(DB) {
     console.log(DB);
-    $("#desc").append(DB.desc);
-    $("#price").append(DB.price);
-    $("#name").append(DB.name);
-    $("#cat").append(DB.cat);
-
+    $("#name").val(DB.name)
+    $("#desc").val(DB.desc);
+    $("#price").val(DB.price);
+    // $("#name").append(DB.name);
+    $("#cat").val(DB.cat);
+    console.log($("#button"))
     var itemObj = {
       name: DB.name,
       price: DB.price,
@@ -18,11 +19,13 @@ $(document).ready(function() {
 
     console.log(itemObj)
 
-    $("#button").click(function() {
-      $.post("/pay", itemObj
-      ).then(function() {
-        console.log(DB);
-      });
-    });
+    // $("button").click(function() {
+    //   $.post("/success", DB
+    //   ).then(function() {
+    //     console.log(DB);
+    //     // document.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-85W915805D306792N#/checkout/review";
+
+    //   });
+    // });
   });
 });

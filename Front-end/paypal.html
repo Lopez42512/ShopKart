@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <title>Paypal</title>
-</head>
-<body>
-    <h1 id="name"></h1>
-    <h1 id="desc"></h1>
-    <h1 id="cat"></h1>
-    <h2 id="price">buy for </h2>
+  </head>
+  <body>
+    <!-- <h1 id="name"></h1> -->
+    <!-- <h1 id="desc"></h1> -->
+    <!-- <h1 id="cat"></h1>
+    <h2 id="price">buy for</h2> -->
     <form id="button" action="/pay" method="post">
-        <input type="submit" value="Buy">
-        
+      <!-- <input id="name" type="text" name="fname" /><br /> -->
+      <input type="text" id="name" value="" name="name" /><br />
+      <input type="text" id="price" value="" name="price" /><br />
+      <input type="text" id="cat" value="" name="cat" /><br />
+      <input type="text" id="desc" value="" name="desc" /><br />
+      <input type="submit" value="Buy Now" />
     </form>
     <!-- <button>purchase</button> -->
-</body>
-<script src="./js/paypal.js"></script>
-<!-- <script src="../routes/api-routes.js"></script> -->
+  </body>
+  <script src="./js/paypal.js"></script>
+  <!-- <script src="../routes/api-routes.js"></script> -->
 </html>

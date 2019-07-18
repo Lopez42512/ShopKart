@@ -70,9 +70,9 @@ module.exports = function(app) {
           desc: results[0].description,
           cat: results[0].category}
         
-      console.log("==================================")
-      console.log(x);
-      console.log("==================================")
+      // console.log("==================================")
+      // console.log(x);
+      // console.log("==================================")
       res.json(x);
     });
   });
@@ -116,6 +116,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/pay1", function(req, res) {
+    console.log(req.body);
+
+    
+  });
+
   app.post("/pay", (req, res) => {
     // console.log(req.body.price)
     console.log(req.body)
@@ -126,7 +132,7 @@ module.exports = function(app) {
         payment_method: "paypal"
       },
       redirect_urls: {
-        return_url: "http://localhost:3002/success",
+        return_url: "http://localhost:3002/confirm",
         cancel_url: "http://localhost:3002/cancel"
       },
       transactions: [
@@ -134,9 +140,9 @@ module.exports = function(app) {
           item_list: {
             items: [
               {
-                name: "Car Part",
+                name: req.body.name,
                 sku: "001",
-                price: 99.99,
+                price: req.body.price,
                 currency: "USD",
                 quantity: 1
               }
@@ -144,9 +150,9 @@ module.exports = function(app) {
           },
           amount: {
             currency: "USD",
-            total: 99.99
+            total: req.body.price
           },
-          description: "Engine Part"
+          description: req.body.desc
         }
       ]
     };

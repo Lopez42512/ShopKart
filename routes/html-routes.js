@@ -40,7 +40,10 @@ module.exports = function(app) {
   app.get("/long", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/long.html"));
   });
-
+  
+  app.get("/confirm", function(req, res){
+    res.sendFile(path.join(__dirname, "../Front-end/confirm.html"))
+  })
   
  
 };
