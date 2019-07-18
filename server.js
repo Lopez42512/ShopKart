@@ -29,26 +29,30 @@ require("./routes/api-routes.js")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
+
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/index.html"));
 });
 
+
+
 app.get("/create", (req, res) => {
-  res.sendFile(path.join(__dirname, "./Front-end/Store/listing/create.html"))
+  res.sendFile(path.join(__dirname, "./Front-end/create.html"))
 })
 
 // this route will load login page
-app.get("/login/register", (req, res) => {
+app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/login.html"))
 });
 
 // this route will load registration page
-app.get("/login/register/signup", (req, res) => {
+app.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/registration.html"))
 })
 
 // Login page route
-app.get("/login/register/access", (req, res) => {
+app.get("/access", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/login.html"))
 })
 
