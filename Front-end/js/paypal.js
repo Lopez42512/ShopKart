@@ -19,13 +19,13 @@ $(document).ready(function() {
 
     console.log(itemObj)
 
-    // $("button").click(function() {
-    //   $.post("/success", DB
-    //   ).then(function() {
-    //     console.log(DB);
-    //     // document.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-85W915805D306792N#/checkout/review";
+    $("button").click(function() {
+      $.get("/last", DB
+      ).then(function() {
+        console.log(DB);
+        // document.location.href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-85W915805D306792N#/checkout/review";
 
-    //   });
-    // });
+      });
+    });
   });
 });

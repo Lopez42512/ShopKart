@@ -116,11 +116,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/pay1", function(req, res) {
-    console.log(req.body);
-
-    
-  });
+  
 
   app.post("/pay", (req, res) => {
     // console.log(req.body.price)
@@ -171,30 +167,32 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/success", (req,res) => {
-    const payerId = req.query.PayerID;
-    const paymentId = req.query.paymentId;
+  app.get("/last", (req,res) => {
+    console.log(req.body)
+    // const payerId = req.query.PayerID;
+    // const paymentId = req.query.paymentId;
+    // console.log(req.body)
 
-    const execute_payment_json = {
-      payer_id: payerId,
-      transactions: [{
-        amount: {
-          currency: "USD",
-          total: "25.00"
-        }
-      }]
-    }
+    // const execute_payment_json = {
+    //   payer_id: payerId,
+    //   transactions: [{
+    //     amount: {
+    //       currency: "USD",
+    //       total: req.price
+    //     }
+    //   }]
+    // }
 
-    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment){
-      if(error){
-        // console.log(error.response);
-        throw error;
-      } else {
-          // console.log("Get payment Response");
-          // console.log(JSON.stringify(payment));
-          res.send(payment)
-      }
-    })
+    // paypal.payment.execute(paymentId, execute_payment_json, function (error, payment){
+    //   if(error){
+    //     // console.log(error.response);
+    //     throw error;
+    //   } else {
+    //       // console.log("Get payment Response");
+    //       // console.log(JSON.stringify(payment));
+    //       res.send(payment)
+    //   }
+    // })
   })
 
   app.get("/cancel", (req, res) => res.send("cancelled"))
