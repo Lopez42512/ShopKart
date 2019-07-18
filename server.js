@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 const bodyParser = require("body-parser");
 const paypal = require("paypal-rest-sdk");
-
 var db = require("./models");
 
 paypal.configure({
@@ -41,7 +40,7 @@ require("./routes/html-routes.js")(app);
 
 
 
-db.sequelize.sync( {force: true} ).then(function() {
+db.sequelize.sync( {force: false} ).then(function() {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });

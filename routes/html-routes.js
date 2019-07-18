@@ -29,7 +29,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../Front-end/registration.html"));
   });
 
-  app.get("/Paypal", (req, res) => {
+  app.get("/paypal", (req, res) => {
     res.sendFile(path.join(__dirname, "../Front-end/paypal.html"));
   });
 

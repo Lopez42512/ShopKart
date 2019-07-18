@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <title>Paypal</title>
 </head>
 <body>
-    
-    <form action="/pay" method="post">
+    <h1 id="name"></h1>
+    <h1 id="desc"></h1>
+    <h1 id="cat"></h1>
+    <h2 id="price">buy for </h2>
+    <form id="button" action="/pay" method="post">
         <input type="submit" value="Buy">
-        <h1>whatever</h1>
-        <h2>buy for 25$</h2>
+        
     </form>
+    <!-- <button>purchase</button> -->
 </body>
+<script src="./js/paypal.js"></script>
+<!-- <script src="../routes/api-routes.js"></script> -->
 </html>

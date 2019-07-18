@@ -8,7 +8,6 @@ var db = require("../models");
 const paypal = require("paypal-rest-sdk");
 
 
-
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -46,6 +45,38 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/paypalInfo", function(req, res) {
+    console.log(req.body);
+    db.Cart.destroy({
+      where: {},
+      truncate: true
+    });
+    db.Cart.create({
+      // UserId: req.body.userId,
+      name: req.body.name,
+      category: req.body.category,
+      description: req.body.description,
+      price: req.body.price,
+      create_at: req.body.create_at
+    }).then(function(results) {
+      res.end();
+    });
+  });
+  app.get("/api/paypal", function(req, res) {
+    db.Cart.findAll({}).then(function(results) {
+      const x ={
+          name: results[0].name,
+          price: results[0].price,
+          desc: results[0].description,
+          cat: results[0].category}
+        
+      console.log("==================================")
+      console.log(x);
+      console.log("==================================")
+      res.json(x);
+    });
+  });
+
   // create a new user
   // app.post("/api/new/user", function(req, res) {
   //   console.log(req.body);
@@ -57,10 +88,25 @@ module.exports = function(app) {
   //     res.end();
   //   });
   // });
-
+  // app.post("/paypalInfo", (req,res) => {
+  //   console.log(req.body)
+  //   var name = req.body.name;
+  //   var cat = req.body.category;
+  //   var desc = req.body.description;
+  //   var price = req.body.price;
+  //   console.log(name + "hello",cat,desc,price)
+  //   var x = name + "," + cat + "," + desc + "," + price;
+  //   res.sendFile(__filename + "/paypal", x)
+  // })
+  
+  // app.get("/paypal", (req,res) => {
+  //   console.log(req, res)
+  // })
   app.post("/pay", (req, res) => {
-    console.log(res)
+    // console.log(req.body.price)
+    console.log(req.body)
     var create_payment_json = {
+      
       intent: "sale",
       payer: {
         payment_method: "paypal"
@@ -74,9 +120,9 @@ module.exports = function(app) {
           item_list: {
             items: [
               {
-                name: "whatever",
+                name: "Car Part",
                 sku: "001",
-                price: "25.00",
+                price: 99.99,
                 currency: "USD",
                 quantity: 1
               }
@@ -84,9 +130,9 @@ module.exports = function(app) {
           },
           amount: {
             currency: "USD",
-            total: "25.00"
+            total: 99.99
           },
-          description: "This is the payment description."
+          description: "Engine Part"
         }
       ]
     };
@@ -95,6 +141,7 @@ module.exports = function(app) {
       if (error) {
         throw error;
       } else {
+        // console.log(payment)
         for(var i = 0; i < payment.links.length; i++){
           if(payment.links[i].rel === "approval_url"){
             res.redirect(payment.links[i].href)
@@ -120,11 +167,11 @@ module.exports = function(app) {
 
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment){
       if(error){
-        console.log(error.response);
+        // console.log(error.response);
         throw error;
       } else {
-          console.log("Get payment Response");
-          console.log(JSON.stringify(payment));
+          // console.log("Get payment Response");
+          // console.log(JSON.stringify(payment));
           res.send(payment)
       }
     })
