@@ -65,7 +65,7 @@ app.get("/access", (req, res) => {
 
 
 
-db.sequelize.sync( {force: true} ).then(function() {
+db.sequelize.sync( {force: false} ).then(function() {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
