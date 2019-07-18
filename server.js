@@ -7,15 +7,12 @@ const bodyParser = require("body-parser");
 const paypal = require("paypal-rest-sdk");
 
 var db = require("./models");
-<<<<<<< HEAD
-=======
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
   'client_id': 'ATrWQTn1u_taOphdJbsOy0OM18uHITJmcQYLRhwtNlw1-0MnKKq5jPF7S5Z4l37DuAMde7SMcZqgdvCJ',
   'client_secret': 'ED1mU57xZRE4UFtSOre_gqy_xYkVBsp1uqRopVBhvOyox1ELOtlRrEHPxd5-B1U0NcUMYXdf7Asoai99'
 });
->>>>>>> 54fe810d54a1ab2bceaada03da8b97af76b6ab1c
 
 // support parsing of application/json type post data
 app.use(bodyParser.json({limit: '10mb', extended: true}));
@@ -32,18 +29,13 @@ app.use(express.static("Front-end"));
 // }
 
 require("./routes/api-routes.js")(app);
-<<<<<<< HEAD
-
-=======
 require("./routes/html-routes.js")(app);
->>>>>>> 54fe810d54a1ab2bceaada03da8b97af76b6ab1c
 // Define API routes here
 
 // require("./app/routes/api-routes.js")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-<<<<<<< HEAD
 
 
 app.get("/", (req, res) => {
@@ -65,9 +57,6 @@ app.get("/login", (req, res) => {
 app.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/registration.html"))
 })
-=======
-
->>>>>>> 54fe810d54a1ab2bceaada03da8b97af76b6ab1c
 
 // Login page route
 app.get("/access", (req, res) => {
