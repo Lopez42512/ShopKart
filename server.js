@@ -38,6 +38,30 @@ require("./routes/html-routes.js")(app);
 // Define any API routes before this runs
 
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/index.html"));
+});
+
+
+
+app.get("/create", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/create.html"))
+})
+
+// this route will load login page
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/login.html"))
+});
+
+// this route will load registration page
+app.get("/signup", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/registration.html"))
+})
+
+// Login page route
+app.get("/access", (req, res) => {
+  res.sendFile(path.join(__dirname, "./Front-end/login.html"))
+})
 
 
 

@@ -17,34 +17,40 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <title>ShopKart-login</title>
-
+    
 </head>
 
 <body>
 
     <br />
-<div class="container">
+    <div class="container">
         <div class="jumbotron">
-                <h1 class="display-4 jumboTitle">ShopKart</h1>
-                <hr class="my-4">
-                <p class="center">Buy & Sell</p>
-                <p class="center">Create Your Own Store</p>
-            </div>
-<br />
+            <h1 class="display-4 jumboTitle">ShopKart</h1>
+            <hr class="my-4">
+            <p class="center">Buy & Sell</p>
+            <p class="center">Create Your Own Store</p>
+        </div>
+        <br />
         <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Name and Password</span>
-                </div>
-                <input type="text" aria-label="First name" class="form-control">
-                <input type="text" aria-label="Last name" class="form-control">
-                <button>Login</button>
-              </div>
-<br />
-<br />
-<br />
-    <p>If you don't have an account with us please press<a href="/login/register/signup"><h1>here</h1> </a>to sign up</p>
-</div>
-    </body>
-    </html>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Name and Password</span>
+            </div>
+            <input id="username" type="text" aria-label="First name" class="form-control">
+            <input id="password" type="text" aria-label="Last name" class="form-control">
+            <button id="loginBtn">Login</button>
+        </div>
+        <br />
+        <div id="wm"></div>
+        <br />
+        <br />
+        <p class="loginPageMessage">If you don't have an account with us please press<a href="/signup">
+                <h1>here</h1>
+            </a>to sign up</p>
+    </div>
+   
+</body>
+<script src="js/login.js"></script>
+
+</html>
