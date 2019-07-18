@@ -33,11 +33,17 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/short.html"));
   });
 
+  app.get("/paypal", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Front-end/paypal.html"));
+  });
   // long route loads the long.html page, where long books in the db are displayed
   app.get("/long", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/long.html"));
   });
-
+  
+  app.get("/confirm", function(req, res){
+    res.sendFile(path.join(__dirname, "../Front-end/confirm.html"))
+  })
   
  
 };

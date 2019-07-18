@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 const bodyParser = require("body-parser");
 const paypal = require("paypal-rest-sdk");
-
 var db = require("./models");
 
 paypal.configure({
@@ -62,6 +61,8 @@ app.get("/signup", (req, res) => {
 app.get("/access", (req, res) => {
   res.sendFile(path.join(__dirname, "./Front-end/login.html"))
 })
+
+
 
 
 

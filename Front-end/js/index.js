@@ -62,8 +62,10 @@ $(document).ready(function () {
                         price: name.innerHTML.split('price: ').pop().split('<')[0]
                     };
                     console.log(paypalObj)
-                    $.post("/pay", paypalObj).then(function() {
-                    console.log("success");
+                    $.post("/paypalInfo", paypalObj).then(function() {
+                        console.log("success");
+                        document.location.href="/paypal";
+
                 });
                 })
             });

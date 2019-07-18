@@ -8,5 +8,7 @@ $("#register").on("click", function(){
 
     $.post("/api/new/user", newUser).then(function() {
          console.log("success");
+         document.location.href="/login";
+
 });
 })
