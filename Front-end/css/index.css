@@ -46,4 +46,21 @@
   .loginPageMessage{
       color: white;
   }
+  h6{
+      color: black;
+  }
+
+  #test_one{
+  border: 1px solid greenyellow;
+  
+  }
+  .sellBody{
+      padding: 20px;
+  }
+
+  .image{
+    margin-top: 40px;
+  }
+
  
+  

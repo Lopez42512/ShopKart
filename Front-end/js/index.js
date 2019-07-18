@@ -40,6 +40,7 @@ $(document).ready(function () {
                     
                     img.src = testToString;
                     img.class = img;
+                    // img.addClass("imgSize");
                     // .replace(/\s/g, "+");
 
                     //=========================

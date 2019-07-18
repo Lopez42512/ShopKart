@@ -47,16 +47,44 @@ module.exports = function(app) {
   });
 
   // create a new user
-  // app.post("/api/new/user", function(req, res) {
-  //   console.log(req.body);
+  app.post("/api/new/user", function(req, res) {
+    console.log(req.body);
 
-  //   db.User.create({
-  //     username: req.body.email,
-  //     password: req.body.password
-  //   }).then(function(results) {
-  //     res.end();
-  //   });
-  // });
+    db.User.create({
+      username: req.body.email,
+      password: req.body.password
+    }).then(function(results) {
+      res.send({
+        status: "added",
+        message:"Your account created"});
+    });
+  });
+
+  //========================== User login route ============================
+  app.get("/api/username:n/Password:p", function(req, res) {
+    console.log(req.params);
+    // Find one user with the username and password 
+    db.User.findOne({
+      where: {
+        username: req.params.n,
+        password: req.params.p
+      }
+    }).then(function(result) {
+    
+       if(result === null){
+        user_id_status = false;
+       res.json(result);
+
+      } else if (result !== null){
+        user_id_status = true;
+        console.log(user_id_status);
+        console.log("======================================")
+        console.log(result.id);
+      res.json(result.id);
+      }
+    });
+  });
+
 
   app.post("/pay", (req, res) => {
     console.log(res)

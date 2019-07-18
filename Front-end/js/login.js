@@ -14,7 +14,8 @@ $("#loginBtn").on("click", function (event) {
     //         console.log(res);
 
     // });
-    //"/api/username:nAndPassword:p"
+    // "/api/username:nAndPassword:p"
+
     $.ajax({
         url: "/api/username" + userLogin.username + "/Password" + userLogin.password,
         method: "GET"

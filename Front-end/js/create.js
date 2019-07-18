@@ -15,14 +15,19 @@ function previewFile() {
   }
   
   previewFile(); //calls the function named previewFile()
-  
+
+  var url = window.location.search;
+    
+     var authorId = url.split("?")[1];
+     console.log(authorId);
+
   $("#submit").click(function(event) {
     event.preventDefault();
   
     var imgSrc = $("img").attr("src");
   
     var newItem = {
-      userId: "1",
+      userId: authorId,
       name: $("#name").val(),
       description: $("#desc").val(),
       price: $("#price").val(),
