@@ -19,7 +19,7 @@ $(document).ready(function() {
     console.log(itemObj)
 
     $("#button").click(function() {
-      $.post("/pay", DB[0]
+      $.post("/pay", itemObj
       ).then(function() {
         console.log(DB);
       });

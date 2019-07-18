@@ -18,27 +18,32 @@ function previewFile() {
     preview.src = "";
   }
 }
+  previewFile(); //calls the function named previewFile()
 
-previewFile(); //calls the function named previewFile()
+  var url = window.location.search;
+    
+     var authorId = url.split("?")[1];
+     console.log(authorId);
 
-$("#submit").click(function(event) {
-  event.preventDefault();
+  $("#submit").click(function(event) {
+    event.preventDefault();
+  
+    var imgSrc = $("img").attr("src");
+  
+    var newItem = {
+      userId: authorId,
+      name: $("#name").val(),
+      description: $("#desc").val(),
+      price: $("#price").val(),
+      category: $("#cat").val(),
+      image: imgSrc
+    };
+  
+    console.log(newItem);
+  
+    $.post("/api/new", newItem).then(function() {
+      console.log("success");
+      document.location.href="/";
 
-  var imgSrc = $("img").attr("src");
-
-  var newItem = {
-    UserId: authorId,
-    name: $("#name").val(),
-    description: $("#desc").val(),
-    price: $("#price").val(),
-    category: $("#cat").val(),
-    image: imgSrc
-  };
-
-  console.log(newItem);
-
-  $.post("/api/new", newItem).then(function() {
-    console.log("success");
-    document.location.href="/";
+    });
   });
-});

@@ -40,6 +40,7 @@ $(document).ready(function () {
                     
                     img.src = testToString;
                     img.class = img;
+                    // img.addClass("imgSize");
                     // .replace(/\s/g, "+");
 
                     //=========================
@@ -63,7 +64,7 @@ $(document).ready(function () {
                     console.log(paypalObj)
                     $.post("/paypalInfo", paypalObj).then(function() {
                         console.log("success");
-                        // document.location.href="/paypal";
+                        document.location.href="/paypal";
 
                 });
                 })

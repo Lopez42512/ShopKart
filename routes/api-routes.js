@@ -78,30 +78,44 @@ module.exports = function(app) {
   });
 
   // create a new user
-  // app.post("/api/new/user", function(req, res) {
-  //   console.log(req.body);
+  app.post("/api/new/user", function(req, res) {
+    console.log(req.body);
 
-  //   db.User.create({
-  //     username: req.body.email,
-  //     password: req.body.password
-  //   }).then(function(results) {
-  //     res.end();
-  //   });
-  // });
-  // app.post("/paypalInfo", (req,res) => {
-  //   console.log(req.body)
-  //   var name = req.body.name;
-  //   var cat = req.body.category;
-  //   var desc = req.body.description;
-  //   var price = req.body.price;
-  //   console.log(name + "hello",cat,desc,price)
-  //   var x = name + "," + cat + "," + desc + "," + price;
-  //   res.sendFile(__filename + "/paypal", x)
-  // })
-  
-  // app.get("/paypal", (req,res) => {
-  //   console.log(req, res)
-  // })
+    db.User.create({
+      username: req.body.email,
+      password: req.body.password
+    }).then(function(results) {
+      res.send({
+        status: "added",
+        message:"Your account created"});
+    });
+  });
+
+  //========================== User login route ============================
+  app.get("/api/username:n/Password:p", function(req, res) {
+    console.log(req.params);
+    // Find one user with the username and password 
+    db.User.findOne({
+      where: {
+        username: req.params.n,
+        password: req.params.p
+      }
+    }).then(function(result) {
+    
+       if(result === null){
+        user_id_status = false;
+       res.json(result);
+
+      } else if (result !== null){
+        user_id_status = true;
+        // console.log(user_id_status);
+        // console.log("======================================")
+        // console.log(result.id);
+      res.json(result.id);
+      }
+    });
+  });
+
   app.post("/pay", (req, res) => {
     // console.log(req.body.price)
     console.log(req.body)
@@ -178,80 +192,5 @@ module.exports = function(app) {
   })
 
   app.get("/cancel", (req, res) => res.send("cancelled"))
-  // // Get a specific book
-  // app.get("/api/:book", function(req, res) {
-  //   Book.findAll({
-  //     where: {
-  //       title: req.params.book
-  //     }
-  //   }).then(function(results) {
-  //     res.json(results);
-  //   });
-  // });
-
-  // Get all books from a specific author
-  //   app.get("/api/author/:author", function(req, res) {
-  //     Book.findAll({
-  //       where: {
-  //         author: req.params.author
-  //       }
-  //     }).then(function(results) {
-  //       res.json(results);
-  //     });
-  //   });
-
-  //   // Get all "long" books (books 150 pages or more)
-  //   app.get("/api/books/long", function(req, res) {
-  //     Book.findAll({
-  //       where: {
-  //         pages: {
-  //           $gte: 150
-  //         }
-  //       },
-  //       order: [["pages", "DESC"]]
-  //     }).then(function(results) {
-  //       res.json(results);
-  //     });
-  //   });
-
-  //   // Get all "short" books (books 150 pages or less)
-  //   app.get("/api/books/short", function(req, res) {
-  //     Book.findAll({
-  //       where: {
-  //         pages: {
-  //           $lte: 150
-  //         }
-  //       },
-  //       order: [["pages", "ASC"]]
-  //     }).then(function(results) {
-  //       res.json(results);
-  //     });
-  //   });
-
-  //   // Add a book
-  //   app.post("/api/new", function(req, res) {
-  //     console.log("Book Data:");
-  //     console.log(req.body);
-  //     Book.create({
-  //       title: req.body.title,
-  //       author: req.body.author,
-  //       genre: req.body.genre,
-  //       pages: req.body.pages
-  //     }).then(function(results) {
-  //       res.json(results);
-  //     });
-  //   });
-
-  //   // Delete a book
-  //   app.delete("/api/book/:id", function(req, res) {
-  //     console.log("Book ID:");
-  //     console.log(req.params.id);
-  //     Book.destroy({
-  //       where: {
-  //         id: req.params.id
-  //       }
-  //     }).then(function() {
-  //       res.end();
-  //     });
-  //   });
+  
 };

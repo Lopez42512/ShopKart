@@ -6,34 +6,41 @@
 // =============================================================
 var path = require("path");
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
+
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Front-end/index.html"));
+  // index route loads view.html
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/view.html"));
   });
 
-  app.get("/create", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Front-end/create.html"));
+  // add route loads the add.html page, where users can enter new books to the db
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/add.html"));
   });
 
-  // this route will load login page
-  app.get("/login/register", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Front-end/login.html"));
+  // all route loads the all.html page, where all books in the db are displayed
+  app.get("/all", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/all.html"));
   });
 
-  // this route will load registration page
-  app.get("/login/register/signup", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Front-end/registration.html"));
+  // short route loads the short.html page, where short books in the db are displayed
+  app.get("/short", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/short.html"));
   });
 
   app.get("/paypal", (req, res) => {
     res.sendFile(path.join(__dirname, "../Front-end/paypal.html"));
   });
-
-  app.get("/success:paymentId", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Front-end/registration.html"));
+  // long route loads the long.html page, where long books in the db are displayed
+  app.get("/long", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/long.html"));
   });
+
+  
+ 
 };

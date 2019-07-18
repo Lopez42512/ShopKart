@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
     <title>Create</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="/">ShopKart</a>
@@ -81,14 +82,18 @@
         </nav>
     </div>
     <div class="container">
+            
         <div class="sellBody">
-            <h4 class="HMargin listTitle">Listing Details</h4>
+                <h4 class="HMargin listTitle">Listing Details</h4>
             <div class="productName">
-                <h6 class="HMargin row">Product Name</h5>
+                  
+                    <label>Product Name</label>
                     <input id="name" class="nameWidth" placeholder="Product Name">
             </div>
+            <br />
             <div class="productDesc">
-                <h6 class="HMargin row">Description</h5>
+                <!-- <h5>Description</h5> -->
+                <label>Description</label>
                     <!-- <input id="desc" class="descWidth" placeholder="Product Description"> -->
                     <div class="input-group descWidth">
                         <div class="input-group-prepend">
@@ -96,23 +101,36 @@
                         <textarea id="desc" class="form-control" aria-label="With textarea"></textarea>
                     </div>
             </div>
+            <br />
             <div class="productPrice">
-                <h6 class="HMargin row">Price</h5>
+                <!-- <h6>Price</h5> -->
+                    <label>Price</label>
                     <input id="price" class="priceWidth" placeholder="Price">
             </div>
+            <br />
+            <h7>Category</h7>
             <select id="cat" class="HMargin productSelect">
-                <option>All</option>
+                <!-- <option>All</option> -->
                 <option>Art</option>
                 <option>Electronics</option>
                 <option>Books</option>
                 <option>Home and Garden</option>
                 <option>Jewelry</option>
             </select>
-            <input type="file" class="HMargin row productInput" onchange=previewFile()><br>
-            <img id="img" class="HMargin row productImg" height="150" alt="">
-            <button id="submit" class="HMargin productSubmit">Submit</button>
+           
+            <br />
+            <br />
+            <div class="d-flex justify-content-between">
+            <button class="btn btn-success" id="submit" >Submit</button>
+            <input type="file"  onchange=previewFile()></div>
+            <img id="img" class="image" height="150" alt="">
+           
+            <!-- class="HMargin row productImg" -->
+
         </div>
     </div>
 </body>
+
 <script src="./js/create.js"></script>
+
 </html>
