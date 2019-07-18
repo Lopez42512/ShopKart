@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(document).ready(function () {
 var loginLink = $("#linkToLoginPage");
     loginLink.hide();
@@ -32,3 +33,17 @@ var loginLink = $("#linkToLoginPage");
     })
 
 });
+=======
+$("#register").on("click", function(){
+
+    var newUser = {
+        email: $('#email').val(),
+        password: $('#password').val()
+    }
+    console.log(newUser);
+
+    $.post("/api/new/user", newUser).then(function() {
+         console.log("success");
+});
+})
+>>>>>>> 54fe810d54a1ab2bceaada03da8b97af76b6ab1c
